@@ -21,7 +21,7 @@ I am currently enrolled in "CSC-114: AI I", where I am increasing my knowledge i
 ## Antarctica is the only continent that I have not visited ##
 
 ### ✈️ Selected Travel Experience
-| Year / Date | Destination | Country | With Whom | Remarks |
+| Year | Destination | Country | With Whom | Remarks |
 |------------|---------|---------|----------|---------|
 | Jun 1986 | Panama Canal | Panama | Aldo Mata | Noriega incident |
 | Mar 1987 | Veracruz | Mexico | Aldo Mata, David Dodd | Road Trip around Gulf |
