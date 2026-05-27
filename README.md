@@ -17,7 +17,8 @@ I am currently enrolled in "CSC-114: AI I", where I am increasing my knowledge i
 ## 🔥 My “Foo” — Travel & Cultural Exploration
 🌍 Beyond technology and cybersecurity, I am deeply passionate about **international travel and cultural exploration**. My experiences span multiple continents and decades, exposing me to diverse political systems, cultures, languages, and operational environments. These experiences have strengthened my adaptability, situational awareness, and global perspective—qualities that directly inform my approach to cybersecurity, risk analysis, and problem solving.
 
-## USA States not visited as of yet (8) : Alaska, Colorado, North Dakota, Missori, Nebraska, Arkanasas, Michigan, Wisconsin
+## USA States not visited as of yet (8) : Alaska, Colorado, North Dakota, Missori, Nebraska, Arkanasas, Michigan, Wisconsin.
+## Antartica is the only continent that I have not visited.
 
 ### ✈️ Selected Travel Experience
 | Year / Date | Destination | Country | With Whom | Remarks |
