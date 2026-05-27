@@ -1,6 +1,8 @@
 # CSC114
 Artificial Intelligence I
 
+Currently taking CSC-114 and learning to collaborate with AI tools!
+
 > 🛡️ Cybersecurity | 🤖 AI Fundamentals | ☁️ Cloud | 🎓 Education
 
 ## 👋 Hi, I'm 8BitTech2
@@ -11,7 +13,9 @@ Cybersecurity and information technology professional with a strong academic and
 
 ## 🌱 Currently Learning
 I am currently enrolled in "CSC-114: AI I", where I am increasing my knowledge in artificial intelligence, ethical AI considerations, and applied AI use cases within cybersecurity and information systems. This coursework directly supports my long-term focus on AI-integrated cyber defense education and secure system design.
-
+- ￿ AI collaboration and prompt engineering
+- ￿ GitHub workflows and version control
+- ￿ Building my first AI assistants
 ---
 
 ## 🔥 My “Foo” — Travel & Cultural Exploration
