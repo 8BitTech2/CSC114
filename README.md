@@ -18,28 +18,29 @@ I am currently enrolled in "CSC-114: AI I", where I am increasing my knowledge i
 🌍 Beyond technology and cybersecurity, I am deeply passionate about **international travel and cultural exploration**. My experiences span multiple continents and decades, exposing me to diverse political systems, cultures, languages, and operational environments. These experiences have strengthened my adaptability, situational awareness, and global perspective—qualities that directly inform my approach to cybersecurity, risk analysis, and problem solving.
 
 ### ✈️ Selected Travel Experience
-| Year / Date | Location | Country | With Whom | Remarks |
+| Year / Date | Destination | Country | With Whom | Remarks |
 |------------|---------|---------|----------|---------|
-| Jun 1986 | Panama | Panama | Aldo Mata | |
-| Mar 1987 | Veracruz | Mexico | Aldo Mata, David Dodd | |
-| Dec 1987 | Cancun | Mexico | Jim Vickers | |
-| Oct 1990 | Saudi Arabia | Saudi Arabia | | |
-| Mar 1991 | Iraq | Iraq | | |
-| 1998 | Sonora Bay | Mexico | Vicki | |
+| Jun 1986 | Panama Canal | Panama | Aldo Mata | Noriega incident |
+| Mar 1987 | Veracruz | Mexico | Aldo Mata, David Dodd | Road Trip around Gulf |
+| Dec 1987 | Cancun | Mexico | Jim Vickers | Snorkling cruise |
+| Oct 1990 | Saudi Arabia | Saudi Arabia | | Army Deployment|
+| Mar 1991 | Iraq | Iraq | | Army Deployment |
+| 1998 | Sonora Bay | Mexico | Vicki | Club Med |
 | 1999 | Germany, Austria, Luxembourg | Europe | Vicki | Romantische Straße |
-| Mar 1999 | Italy, Vatican City | Europe | Vicki | |
-| Dec 1999 | Tegucigalpa | Honduras | Vicki | |
-| 2000 | Nova Scotia | Canada | Vicki | |
-| Sept 2003 | Nassau | Bahamas | Vicki, Alex | |
-| 2011 | Rothenburg | Germany | Vicki, Alex, Zoe | |
-| Dec 2015 | Taipei | Taiwan | John Wu | |
-| Jun 2019 | Castaway Cay | Bahamas | Vicki, Alex, Zoe | |
+| Mar 1999 | Italy, Vatican City | Europe | Vicki | Pompeii bucket list item |
+| Dec 1999 | (Vicki Only) Tegucigalpa | Honduras | Vicki | Army Deployment |
+| 2000 | Nova Scotia | Canada | Vicki | Aniversory |
+| Sept 2003 | Nassau | Bahamas | Vicki, Alex | Disney Cruise |
+| 2011 | Rothenburg | Germany | Vicki, Alex, Zoe | Medeval City |
+| Dec 2015 | Taipei | Taiwan | John Wu | Medical Tourism |
+| Jun 2019 | Castaway Cay | Bahamas | Vicki, Alex, Zoe | Disney Cruise II |
 | Oct 2022 | Istanbul | Turkey | Vicki | Medical tourism |
-| Mar 2023 | Japan | Japan | Family | Bullet train experience |
-| Mar 2024 | Japan | Japan | | |
-| 2024 | Netherlands, Canada | Europe/North America | Alex, Vicki | College search |
+| Mar 2023 | Tokyo, Kyoto | Japan | Vicki, AJ, Bunny, Ali | Bullet train experience |
+| Mar 2024 | Osaka, Naguasaki, Miyajima Island | Japan | Vicki, AJ, Bunny, Ali | Atomic Bomb resolution |
+| 2024 | Netherlands, Canada | Europe/North America | Alex, Vicki | Grad School search |
 | Jul 2025 | France, Morocco, Gibraltar, Spain, Portugal | Europe/Africa | Solo | Bucket-list journey |
-| Apr 2026 | Yellowstone National Park | Utah, Wyoming, Montana, & Idaho | Vicki to see AJ | Bucket-list items!
+| Apr 2026 | Yellowstone National Park | USA (Utah, Wyoming, Montana, & Idaho) | Vicki to see AJ | Bucket-list items! |
+
 🌐 Travel has shaped how I view systems, risk, resilience, and human behavior across borders. These lived experiences consistently inform my work in cybersecurity education, global threat awareness, and technology decision-making.
 
 ### 🌐 Global Travel Footprint
