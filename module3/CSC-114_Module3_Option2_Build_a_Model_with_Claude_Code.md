@@ -65,11 +65,12 @@ npm install -g @anthropic-ai/claude-code
 
 Then **open a new terminal tab** (so it picks up the new command) and verify:
 ```bash
+export ANTHROPIC_API_KEY="MYKEY"
 claude --version
 claude doctor
 ```
 
-`claude --version` should print a version number. `claude doctor` checks your setup and tells you if anything is off — run it any time something misbehaves.
+`claude --version` should print a version number. `claude doctor` checks your setup and tells you if anything is off — run it any time something misbehaves. `claude doctor` will complain that you're not logged in -- as long as the API key is correct, that's OK.
 
 > **If `claude` isn't found:** close and reopen the terminal. If it still fails, run `claude doctor` and read what it says.
 
