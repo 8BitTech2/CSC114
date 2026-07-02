@@ -1,14 +1,13 @@
 # Module 3 — Model Explanation (CSC-114)
 
-> **NOTE TO SELF:** This is a draft with the real numbers from my run. The
-> grade is on explaining this *in my own words*, so I should reword each
-> answer in my own voice before submitting. The numbers and facts below are
-> correct for my run.
+> **NOTE TO SELF:** This is a draft with the real numbers from my run. The grade
+> is on explaining this *in my own words* — so reword each answer in my own voice
+> before submitting. The numbers and facts below are correct for my run.
 
 ## What I built
 A small Keras neural network that predicts the **median house value** of a
-California neighborhood block from the California Housing dataset (which ships
-with scikit-learn, already cleaned).
+California neighborhood block. The data is the California Housing dataset, which
+ships with scikit-learn already cleaned, so I could focus on the model itself.
 
 ---
 
@@ -31,16 +30,17 @@ The **target** is the **median house value**, reported in units of $100,000
 
 ### 2. Is the model regression or classification?
 **Regression.** The target is a continuous number (a dollar value), not a fixed
-category. The giveaways in the code: the final layer is `Dense(1)` (one number
-out) and the loss is `mean_squared_error`. A classification model would instead
-end in `Dense(num_classes, activation="softmax")` and use a cross-entropy loss.
+category. Two giveaways in the code prove it: the final layer is `Dense(1)` (one
+number out, no activation), and the loss is `mean_squared_error`. A
+classification model would instead end in `Dense(num_classes, activation="softmax")`
+and use a cross-entropy loss.
 
 ### 3. What optimizer trained the model, and why?
 **Adam.** An optimizer is the rule for *how* the model adjusts its weights after
-each batch to shrink the loss. Adam adapts the step size for each weight
-automatically and includes momentum, so it trains reliably without me having to
-hand-tune a learning rate. It's the standard, dependable default — that's why I
-picked it over plain SGD.
+each batch to shrink the loss. Adam adapts the step size for each weight on its
+own and adds momentum, so it trains reliably without me hand-tuning a learning
+rate. That dependable, no-fuss behavior is why I chose it over plain SGD, where
+I'd have to pick the learning rate carefully myself.
 
 ### 4. About how many epochs did it take to reach the best result?
 I set an upper limit of **100 epochs** but used an `EarlyStopping` callback that
@@ -55,9 +55,9 @@ On the held-out **test set** (data it never trained on):
 - **Test loss (MSE): 0.2672**
 - Average miss (MAE): about **$34,670**
 
-The MSE of 0.2672 is in units of (×$100,000)², which is hard to read directly —
-that's why I also report MAE, which says the model is off by about $35k on a
-typical prediction.
+The MSE of 0.2672 is in squared units of $100,000, so it's hard to read as money
+directly. That's why I also report MAE: it says the model is off by about $35k on
+a typical prediction, which is a number I can actually picture.
 
 ### 6. Can I save the model, send it inputs, and get a prediction? (Yes — proof)
 `model.py` saves the trained model with `model.save("house_price_model.keras")`.
