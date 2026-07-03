@@ -1,4 +1,4 @@
-
+Using Claude account for this assignment.
 This files completes all four Module 5 deliverables:
 
 charter.md — problem, cohort (NLP), data/tools, definition of good enough, scope guard, solo role
