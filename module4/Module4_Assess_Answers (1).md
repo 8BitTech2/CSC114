@@ -3,7 +3,7 @@
 
 ---
 
-## Part 1 — Your Run
+## Part 1 — My Run
 
 **Q1. Which option did you build, and what one change did you make, if any?**
 
@@ -11,7 +11,7 @@ I built the house prices model. The one change I made was experimenting with the
 
 ---
 
-## Part 2 — Your Training Curve
+## Part 2 — My Training Curve
 
 **Q2. Attach your training curve. Looking at your curve, at which epoch does the validation line stop improving? How can you tell from the picture?**
 
@@ -25,7 +25,7 @@ After epoch 28, the validation MAE stops improving and just plateaus/bounces aro
 
 ---
 
-## Part 3 — Working With Your Agent
+## Part 3 — Working With My Agent
 
 **Q4. Describe one moment you corrected or pushed back on your agent.**
 
@@ -37,7 +37,7 @@ One thing my agent did well was explain overfitting and suggest experimenting wi
 
 ---
 
-## Part 4 — Why Your Settings Are the Right Ones
+## Part 4 — Why My Settings Are the Right Ones
 
 **Q6. Option B — House Prices**
 
@@ -63,8 +63,6 @@ However, I still trust my agent more than myself on the mean/standard deviation 
 
 **Q9. Explain your model to a classmate in three sentences.**
 
-[Note: confirm your input features before submitting — e.g. housing characteristics such as rooms, location, and income level]
-
 My model takes in housing feature data. It predicts the price of a house. The model makes predictions, compares them to the actual prices, and adjusts its internal weights to reduce the error — repeating this process until the predictions are as accurate as possible.
 
 ---
@@ -87,5 +85,7 @@ I understand why we normalize using only training stats (to avoid data leakage),
 
 ## Submission Items
 
-- Training curve image: [attach housing_val_mae.png and/or housing_val_mae_truncated.png]
-- Apply PR link / Apply screenshots: [attach here]
+- Training curve image: <img width="692" height="544" alt="housing_val_mae_truncated" src="https://github.com/user-attachments/assets/72a04f70-4841-4171-b55a-6d848f10b202" />
+
+- Apply PR link / Apply screenshots: <img width="681" height="544" alt="housing_val_mae" src="https://github.com/user-attachments/assets/77d7f735-e75b-4767-91ca-1a8300246025" />
+
