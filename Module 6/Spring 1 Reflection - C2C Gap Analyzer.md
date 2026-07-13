@@ -2,7 +2,7 @@
 
 *Module 5: Assess — Machine Learning Workflow*
 
-> Instructor note: This is the reflection, with annotations explaining *why* each part meets the Proficient bar on the rubric rather than Developing. I will this version when walking students through what separates a vague reflection from a strong one.
+> Instructor note: This is the reflection, with annotations explaining *why* each part meets the Proficient bar on the rubric rather than Developing. I will use this version when walking students through what separates a vague reflection from a strong one.
 
 ---
 
