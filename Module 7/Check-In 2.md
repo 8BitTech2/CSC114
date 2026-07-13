@@ -32,15 +32,15 @@ The third row matters: the underlying data didn't change. The fix was in how the
 The visual chart shown in this conversation scales the predicted probability by ×100 (0.03 → 3, 0.89 → 89) so both metrics fit the same 0–100 axis for visual comparison. The actual predicted probability values are 0.03 and 0.89, not 3 and 89 — see the table above for the real values.
 
 
-## What changed since Check-In 1
+## 1. What changed since Check-In 1?
 
 The AI agent (step 5 of the pipeline) got built and run end-to-end for the first time, before Check-In 1 it existed only as a design document with no code. During that build, the dashboard surfaced an anomaly: `cloud_platforms` was scoring 3.5/100 despite CTI-141 being a dedicated cloud course. The first attempted fix was expanding the taxonomy's keyword list for that category, on the assumption that the classifier just wasn't recognizing enough cloud-related vocabulary. That change was made, the pipeline was rerun, and the score didn't move at all, same 3.5/100.
 
-## Why the keyword expansion was expected to help
+## 2. Why the keyword expansion was expected to help?
 
 Weak-labeling in this pipeline works by keyword matching: a course gets tagged as belonging to a category if its description contains any of that category's keywords. If a category was scoring near-zero, a thin keyword list would be the obvious first suspect, not enough terms to catch real cloud-related language across course descriptions and O*NET job task text.
 
-## Did it actually help, and how do I know
+## 3. Did it actually help, and how do I know?
 
 No, verified directly, not just inferred from the unchanged score. Checking the actual weak-label output showed CTI-141 was already correctly tagged 1 for `cloud_platforms` before the keyword expansion, meaning the labeling step was never the problem. The real fault was downstream: checked the classifier's predicted probabilities per course and found CTI-141 was getting a probability of only 0.03 for `cloud_platforms` even though it was labeled 1 for that category. Traced the training data and found only 1 of 74 total documents was a positive example for that category: LogisticRegression, without class balancing, was suppressing the predicted probability of a rare class close to zero even on the one document that should have scored high.
 
