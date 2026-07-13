@@ -1,0 +1,110 @@
+{
+  "report_source": "template",
+  "report": "GAP REPORT (templated fallback - no ANTHROPIC_API_KEY set)\n\nCurriculum coverage is uneven across the taxonomy: strongest in networking (100.0) and security/compliance (84.4), weakest in the categories below.\n\nWeakest categories curriculum-wide:\n  - cloud_platforms: 34.4/100 -- recommend targeted lab coverage or a dedicated module.\n  - itil_soft_skills: 59.6/100 -- recommend targeted lab coverage or a dedicated module.\n  - virtualization: 60.1/100 -- recommend targeted lab coverage or a dedicated module.\n\nLowest-readiness occupation: Network and Computer Systems Administrators (67.7/100 overall) - driven by low scores in: monitoring_troubleshooting (45.5), hardware_physical_infra (48.6)",
+  "data": {
+    "categories": [
+      "virtualization",
+      "networking",
+      "cloud_platforms",
+      "storage",
+      "security_compliance",
+      "scripting_automation",
+      "monitoring_troubleshooting",
+      "hardware_physical_infra",
+      "itil_soft_skills"
+    ],
+    "occupations": [
+      {
+        "soc_code": "15-1244.00",
+        "title": "Network and Computer Systems Administrators",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 54.5,
+          "cloud_platforms": 89.2,
+          "storage": 67.1,
+          "security_compliance": 61.2,
+          "scripting_automation": 83.8,
+          "monitoring_troubleshooting": 45.5,
+          "hardware_physical_infra": 48.6,
+          "itil_soft_skills": 59.1
+        },
+        "overall_readiness": 67.7
+      },
+      {
+        "soc_code": "15-1212.00",
+        "title": "Information Security Analysts",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 91.4,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 46.8,
+          "scripting_automation": 90.0,
+          "monitoring_troubleshooting": 84.8,
+          "hardware_physical_infra": 90.9,
+          "itil_soft_skills": 93.8
+        },
+        "overall_readiness": 88.6
+      },
+      {
+        "soc_code": "15-1232.00",
+        "title": "Computer User Support Specialists",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 100.0,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 100.0,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 92.7,
+          "hardware_physical_infra": 86.4,
+          "itil_soft_skills": 100.0
+        },
+        "overall_readiness": 97.7
+      },
+      {
+        "soc_code": "15-1241.00",
+        "title": "Computer Network Architects",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 90.2,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 95.3,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 95.0,
+          "hardware_physical_infra": 98.3,
+          "itil_soft_skills": 80.3
+        },
+        "overall_readiness": 95.5
+      },
+      {
+        "soc_code": "15-1299.08",
+        "title": "Computer Systems Engineers/Architects",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 99.4,
+          "cloud_platforms": 100.0,
+          "storage": 96.4,
+          "security_compliance": 77.3,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 76.1,
+          "hardware_physical_infra": 72.2,
+          "itil_soft_skills": 86.1
+        },
+        "overall_readiness": 89.7
+      }
+    ],
+    "curriculum_coverage": {
+      "virtualization": 60.1,
+      "networking": 100.0,
+      "cloud_platforms": 34.4,
+      "storage": 61.2,
+      "security_compliance": 84.4,
+      "scripting_automation": 65.9,
+      "monitoring_troubleshooting": 70.9,
+      "hardware_physical_infra": 72.6,
+      "itil_soft_skills": 59.6
+    }
+  }
+}
