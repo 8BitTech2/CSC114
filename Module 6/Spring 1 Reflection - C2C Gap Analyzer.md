@@ -39,7 +39,7 @@ A few things from the charter aren't there yet. First, my evaluation is thinner 
 Mostly on track, with one real scope change. The charter originally proposed comparing three different classifier types. After getting the first one working, I realized that was overambitious for this sprint, most of my time went into data cleaning I hadn't planned for, since the sample data was messier than expected. I've scaled back to one solid baseline model this sprint and pushed the comparison of additional models to a stretch goal, which I've noted directly in the backlog rather than quietly dropping it. Everything else in the charter (the guardrails concept, the basic pipeline shape) is unchanged. I think this was the right call: a single pipeline that actually runs and is honestly evaluated is more valuable right now than three half-working ones.
 
 > **📝 Why this is Proficient, not Developing:**
-> - States *what changed*, *why it changed*, and *where the change is documented* (backlog) , three things an instructor looks for to confirm the scope change was managed, not just noticed after the fact.
+> - States *what changed*, *why it changed*, and *where the change is documented* (backlog), three things an instructor looks for to confirm the scope change was managed, not just noticed after the fact.
 > - Makes a judgment call explicit ("I think this was the right call...") and defends it, which shows ownership of the decision rather than reporting drift passively.
 > - A Developing response typically either claims "no changes" without checking, or lists a change with no reasoning, this response does neither.
 
