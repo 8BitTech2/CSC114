@@ -9,7 +9,7 @@
 | Positive training examples for `cloud_platforms` in the dataset | 1 of 74 documents (unchanged) | 1 of 74 documents (unchanged) |
 
 The third row matters: the underlying data didn't change. The fix was in how the classifier handled that data.
-# cloud_platforms Fix — Before/After Data
+# cloud_platforms Fix:  Before/After Data
 
 ## Chart
 
