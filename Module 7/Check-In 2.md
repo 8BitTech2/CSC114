@@ -1,4 +1,4 @@
-# Check-In 2 — Is It Getting Better
+# Check-In 2 : Is It Getting Better
 
 ## Before-and-After Comparison
 
