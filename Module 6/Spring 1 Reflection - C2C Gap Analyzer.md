@@ -53,7 +53,7 @@ Mostly on track, with one real scope change. The charter originally proposed com
 |---|---|
 | **What I'm building** | A text classifier that sorts sample documents into categories using a trained model, not just keyword matching. |
 | **What runs today** | Right now it takes cleaned sample text and gives back a predicted category with an accuracy score. |
-| **What's broken or missing** | It fails my trap test case, it doesn't catch malformed input yet — and the edge case just returns a blank prediction instead of a clear error. |
+| **What's broken or missing** | It fails my trap test case, it doesn't catch malformed input yet, and the edge case just returns a blank prediction instead of a clear error. |
 | **What I'm doing next** | Before Check-In 2, I'm fixing the trap-case handling first since it's the riskiest silent failure. |
 
 > **📝 Why this translation works:**
