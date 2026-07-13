@@ -21,10 +21,10 @@ So in short: **ingestion → preprocessing → training → basic evaluation** i
 
 ## What's still missing or broken?
 
-A few things from the charter aren't there yet. First, my evaluation is thinner than I wanted — I'm only reporting accuracy, not precision/recall/F1, so I don't actually know how the model performs on the minority class, which matters given my dataset is imbalanced. Second, the "human-in-the-loop" checkpoint I described in `agent-guardrails.md` is only partially implemented: the script pauses and prints a summary before training, but it doesn't yet require an explicit confirmation input, so it's more of a warning than a real gate. Third, two issues in my GitHub backlog are still open and blocking: one about handling malformed rows instead of silently dropping them, and one about logging model runs so I can compare experiments later. Neither is hard, but neither is done.
+A few things from the charter aren't there yet. First, my evaluation is thinner than I wanted. I'm only reporting accuracy, not precision/recall/F1, so I don't actually know how the model performs on the minority class, which matters given my dataset is imbalanced. Second, the "human-in-the-loop" checkpoint I described in `agent-guardrails.md` is only partially implemented: the script pauses and prints a summary before training, but it doesn't yet require an explicit confirmation input, so it's more of a warning than a real gate. Third, two issues in my GitHub backlog are still open and blocking: one about handling malformed rows instead of silently dropping them, and one about logging model runs so I can compare experiments later. Neither is hard, but neither is done.
 
 > **📝 Why this is Proficient, not Developing:**
-> - Each gap is described with *consequence*, not just listed ("I don't know how it performs on the minority class" — explains why the gap matters, not just that it exists).
+> - Each gap is described with *consequence*, not just listed ("I don't know how it performs on the minority class", explains why the gap matters, not just that it exists).
 > - Self-assessment is calibrated: it distinguishes "partially implemented" from "not implemented," which shows the student actually understands their own guardrail design rather than treating it as done/not-done.
 > - Ties gaps directly to open backlog issues — reflection and project tracking are consistent with each other, which the rubric rewards as evidence the artifacts weren't produced in isolation.
 > - A Developing response here would typically say something like "a few bugs still need fixing" with no specifics.
@@ -36,7 +36,7 @@ A few things from the charter aren't there yet. First, my evaluation is thinner 
 Mostly on track, with one real scope change. The charter originally proposed comparing three different classifier types. After getting the first one working, I realized that was overambitious for this sprint — most of my time went into data cleaning I hadn't planned for, since the sample data was messier than expected. I've scaled back to one solid baseline model this sprint and pushed the comparison of additional models to a stretch goal, which I've noted directly in the backlog rather than quietly dropping it. Everything else in the charter (the guardrails concept, the basic pipeline shape) is unchanged. I think this was the right call: a single pipeline that actually runs and is honestly evaluated is more valuable right now than three half-working ones.
 
 > **📝 Why this is Proficient, not Developing:**
-> - States *what changed*, *why it changed*, and *where the change is documented* (backlog) — three things a grader looks for to confirm the scope change was managed, not just noticed after the fact.
+> - States *what changed*, *why it changed*, and *where the change is documented* (backlog), three things a grader looks for to confirm the scope change was managed, not just noticed after the fact.
 > - Makes a judgment call explicit ("I think this was the right call...") and defends it, which shows ownership of the decision rather than reporting drift passively.
 > - A Developing response typically either claims "no changes" without checking, or lists a change with no reasoning — this response does neither.
 
