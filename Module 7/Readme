@@ -1,0 +1,28 @@
+Here's everything currently in the outputs folder for this project, organized by what's current versus superseded:
+Prospectus (dissertation)
+
+Cloud_Infrastructure_Data_Center_Readiness_Prospectus_Timothy_Ingram.docx — current: your real uploaded file, edited in place with both security clearance additions
+Cloud_Infrastructure_Prospectus_Updated.docx and Cloud_Infrastructure_Prospectus_Timothy_Ingram_updated.docx — superseded: earlier rebuilt versions from before you uploaded the real file; safe to discard
+
+C2C Gap Analyzer pipeline (in c2c_agent/ folder)
+
+curriculum_courses.json — real FTCC course data
+onet_requirements.json — real O*NET occupation task data
+skill_taxonomy.json — the taxonomy the pipeline actually loads (this is v2/expanded)
+skill_taxonomy_v2.json — same content, kept under its versioned name
+skill_taxonomy_v1_backup.json — the original 9-category taxonomy before expansion, kept for reference
+apply_taxonomy.py — classifier + gap analysis pipeline (includes the class_weight="balanced" fix)
+agent.py — the LLM orchestration agent (needs your ANTHROPIC_API_KEY to run for real)
+gap_analysis_results.json / gap_report.json — latest run output (post-fix numbers)
+ftcc_readiness_dashboard_v2.html — interactive dashboard
+skill_taxonomy_expanded_table.md — human-readable taxonomy table for the dissertation appendix
+
+Research instruments
+
+instruments_draft.md — exposure inventory, readiness survey, scenario-based performance tasks (all drafts, pending validation)
+
+Reflections / check-ins
+
+Spring 1 Reflection.md
+Check-In 2 - Is It Getting Better.md
+cloud_platforms_before_after.md + Before_and_After_Data_Chart.png — the before/after data and chart for Check-In 2
