@@ -1,5 +1,9 @@
 # cloud_platforms Fix — Before/After Data
 
+## Chart
+
+![Before and after comparison chart showing curriculum coverage score improving from 3.5 to 34.4 and CTI-141 predicted probability improving from 0.03 to 0.89](Before_and_After_Data_Chart.png)
+
 ## Metrics
 
 | Metric | Before | After |
