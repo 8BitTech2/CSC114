@@ -1,6 +1,6 @@
 ## Since these files live on my Windows machine (C:\Users\tim\Downloads\files (4)\), the actual git init/commit needs to happen there.
 
-1. Copy README.md, requirements.txt, and .gitignore above into your C:\Users\tim\Downloads\files (4)\ folder (or wherever your final working copy lives).
+1. Copy README.md, requirements.txt, and .gitignore above into your C:\Users\tim\Downloads\C2C\ folder (or wherever your final working copy lives).
 2. Open a terminal (PowerShell or Git Bash) in that folder and run:
 
 ## bashgit init
