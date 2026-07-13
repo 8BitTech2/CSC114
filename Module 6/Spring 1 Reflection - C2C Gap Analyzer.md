@@ -59,11 +59,6 @@ Everything else: the core "curriculum vs. job market, scored by category" shape 
 | **What's broken or missing** | It fails my trap test case, it misreads non-technical uses of "cloud" as technical skill matches, and the agent-orchestration loop is still just a design doc, not code. |
 | **What I'm doing next** | Before Check-In 2, I'm fixing the trap-case misclassification first since it directly inflates my most important category. |
 
-> **📝 Why this translation works:**
-> - Each line is **one sentence**, matching the "same as your charter" and "X gives back Y" prompts literally.
-> - "What's broken" names the specific failure mode (misreading non-technical "cloud") instead of softening into "still tuning the model."
-> - "What's next" prioritizes the fix with the biggest validity impact, not just the easiest one to make.
-
 ---
 
 ### Rubric alignment summary
