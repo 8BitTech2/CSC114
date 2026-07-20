@@ -1,0 +1,111 @@
+{
+  "report_source": "template",
+  "report": "GAP REPORT (templated fallback - no ANTHROPIC_API_KEY set)\n\nCurriculum coverage is uneven across the taxonomy: strongest in networking (75.0) and security/compliance (100.0), weakest in the categories below.\n\nWeakest categories curriculum-wide:\n  - virtualization: 56.2/100 -- recommend targeted lab coverage or a dedicated module.\n  - cloud_platforms: 56.2/100 -- recommend targeted lab coverage or a dedicated module.\n  - hardware_physical_infra: 56.2/100 -- recommend targeted lab coverage or a dedicated module.\n\nLowest-readiness occupation: Network and Computer Systems Administrators (91.4/100 overall) - driven by low scores in: hardware_physical_infra (61.6), networking (69.3)",
+  "data": {
+    "categories": [
+      "virtualization",
+      "networking",
+      "cloud_platforms",
+      "storage",
+      "security_compliance",
+      "scripting_automation",
+      "monitoring_troubleshooting",
+      "hardware_physical_infra",
+      "itil_soft_skills"
+    ],
+    "occupations": [
+      {
+        "soc_code": "15-1244.00",
+        "title": "Network and Computer Systems Administrators",
+        "readiness_by_category": {
+          "virtualization": 96.6,
+          "networking": 69.3,
+          "cloud_platforms": 95.2,
+          "storage": 100.0,
+          "security_compliance": 100.0,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 100.0,
+          "hardware_physical_infra": 61.6,
+          "itil_soft_skills": 100.0
+        },
+        "overall_readiness": 91.4
+      },
+      {
+        "soc_code": "15-1212.00",
+        "title": "Information Security Analysts",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 100.0,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 100.0,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 100.0,
+          "hardware_physical_infra": 100.0,
+          "itil_soft_skills": 100.0
+        },
+        "overall_readiness": 100.0
+      },
+      {
+        "soc_code": "15-1232.00",
+        "title": "Computer User Support Specialists",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 100.0,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 100.0,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 100.0,
+          "hardware_physical_infra": 100.0,
+          "itil_soft_skills": 100.0
+        },
+        "overall_readiness": 100.0
+      },
+      {
+        "soc_code": "15-1241.00",
+        "title": "Computer Network Architects",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 100.0,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 100.0,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 100.0,
+          "hardware_physical_infra": 100.0,
+          "itil_soft_skills": 100.0
+        },
+        "overall_readiness": 100.0
+      },
+      {
+        "soc_code": "15-1299.08",
+        "title": "Computer Systems Engineers/Architects",
+        "readiness_by_category": {
+          "virtualization": 100.0,
+          "networking": 100.0,
+          "cloud_platforms": 100.0,
+          "storage": 100.0,
+          "security_compliance": 100.0,
+          "scripting_automation": 100.0,
+          "monitoring_troubleshooting": 100.0,
+          "hardware_physical_infra": 96.4,
+          "itil_soft_skills": 100.0
+        },
+        "overall_readiness": 99.6
+      }
+    ],
+    "curriculum_coverage": {
+      "virtualization": 56.2,
+      "networking": 75.0,
+      "cloud_platforms": 56.2,
+      "storage": 75.0,
+      "security_compliance": 100.0,
+      "scripting_automation": 93.8,
+      "monitoring_troubleshooting": 100.0,
+      "hardware_physical_infra": 56.2,
+      "itil_soft_skills": 81.2
+    },
+    "curriculum_coverage_source": "expert-coded (courses_aligned_with_pillars.xlsx), not classifier-predicted"
+  }
+}

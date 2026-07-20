@@ -1,0 +1,168 @@
+{
+  "program": "FTCC Information Technology / Cloud Management (A25590U)",
+  "effective": "Fall 2025",
+  "total_credits": 66,
+  "source_note": "Course descriptions are the standardized NCCCS Combined Course Library text (identical across NC community colleges, verified against Wake Tech, Durham Tech, Johnston CC, Richmond CC, Piedmont CC catalogs) because the FTCC catalog PDFs in project files have a font-encoding extraction fault that corrupts the description text. Industry certification alignment added from FTCC's official 2025SU_IT_CROSSWALK.pdf (Computer Technologies Certificate Crosswalk), which is authoritative and independent of the NCCCS course-description text.",
+  "courses": [
+    {
+      "code": "CTI-110",
+      "title": "Web, Pgm, & DB Foundation",
+      "credits": 3,
+      "semester": 2,
+      "description": "This course provides an introduction to technology concepts and current trends in IT. Topics include foundational concepts across various IT domains such as, but not limited to, artificial intelligence, database fundamentals, programming principles, and web development. Upon completion, students should be able to demonstrate knowledge in core IT areas and apply skills critical for their academic and professional success.",
+      "industry_certifications": []
+    },
+    {
+      "code": "CTI-120",
+      "title": "Network & Sec Foundation",
+      "credits": 3,
+      "semester": 1,
+      "description": "This course introduces students to the Network concepts, including networking terminology and protocols, local and wide area networks, and network standards. Emphasis is placed on securing information systems and the various implementation policies. Upon completion, students should be able to perform basic tasks related to networking mathematics, terminology, media and protocols.",
+      "industry_certifications": [
+        "CompTIA Network+",
+        "CompTIA Security+"
+      ]
+    },
+    {
+      "code": "CTI-141",
+      "title": "Cloud & Storage Concepts",
+      "credits": 3,
+      "semester": 1,
+      "description": "This course introduces cloud computing and storage concepts. Emphasis is placed on cloud terminology, virtualization, storage networking and access control. Upon completion, students should be able to perform tasks related to installation, configuration and management of cloud storage systems.",
+      "industry_certifications": [
+        "AWS Certified Cloud Practitioner (CLF-C02)",
+        "Microsoft Azure Fundamentals (AZ-900)"
+      ]
+    },
+    {
+      "code": "CTI-240",
+      "title": "Virtualization Admin I",
+      "credits": 3,
+      "semester": 4,
+      "description": "This course covers datacenter virtualization concepts. Topics include data storage, virtual network configuration, virtual machine and virtual application deployment. Upon completion, students should be able to perform tasks related to virtual machine and hypervisor installation and configuration.",
+      "industry_certifications": [
+        "AWS Certified Solutions Architect - Associate (SAA-C03)"
+      ]
+    },
+    {
+      "code": "CTI-241",
+      "title": "Virtualization Admin II",
+      "credits": 3,
+      "semester": 4,
+      "description": "This course covers administration of datacenter virtualization infrastructure. Topics include access control, fault tolerance, scalability, resource management, virtual machine migration and troubleshooting. Upon completion, students should be able to perform tasks related to virtualization security, data protection and resource monitoring.",
+      "industry_certifications": [
+        "Microsoft Azure Administrator (AZ-104)"
+      ]
+    },
+    {
+      "code": "CTI-289",
+      "title": "CTI Capstone Project",
+      "credits": 3,
+      "semester": 5,
+      "description": "This course provides students an opportunity to complete a significant integrated technology project from the design phase through implementation with minimal instructor support. Emphasis is placed on technology policy, process planning, procedure definition, systems architecture, and security.",
+      "industry_certifications": [
+        "Certified Cloud Security Professional (ISC2-CCSP)",
+        "Google Cloud Certified Associate Cloud Engineer (GCP ACE)"
+      ]
+    },
+    {
+      "code": "NOS-110",
+      "title": "Operating Systems Concepts",
+      "credits": 3,
+      "semester": 1,
+      "description": "This course introduces students to a broad range of operating system concepts, including installation and maintenance. Emphasis is placed on operating system concepts, management, maintenance, and resources required. Upon completion of this course, students will have an understanding of OS concepts, installation, management, maintenance, using a variety of operating systems.",
+      "industry_certifications": [
+        "CompTIA A+ (part of sequence)"
+      ]
+    },
+    {
+      "code": "NOS-120",
+      "title": "Linux/UNIX Single User",
+      "credits": 3,
+      "semester": 2,
+      "description": "This course develops the necessary skills for students to develop both GUI and command line skills for using and customizing a Linux workstation. Topics include Linux file system and access permissions, GNOME Interface, VI editor, X Window System expression pattern matching, I/O redirection, network and printing utilities. Upon completion, students should be able to customize and use Linux systems for command line requirements and desktop productivity roles.",
+      "industry_certifications": [
+        "Red Hat Certified System Administrator (EX200: RHCSA)"
+      ]
+    },
+    {
+      "code": "NOS-125",
+      "title": "Linux/UNIX Scripting",
+      "credits": 3,
+      "semester": 4,
+      "description": "This course covers the concepts and features of shell scripting. Topics include process control, shell scripting, advanced search techniques and power user utilities. Upon completion, students should be able to successfully perform various shell scripting tasks.",
+      "industry_certifications": [
+        "Red Hat Certified Systems Engineer (EX294: RHCSA)"
+      ]
+    },
+    {
+      "code": "NOS-220",
+      "title": "Linux/UNIX Admin I",
+      "credits": 3,
+      "semester": 3,
+      "description": "This course introduces the Linux file system, group administration, and system hardware controls. Topics include installation, creation and maintaining file systems, NIS client and DHCP client configuration, NFS, SMB/Samba, Configure X, Gnome, KDE, basic memory, processes, and security. Upon completion, students should be able to perform system administration tasks including installation, configuring and attaching a new Linux workstation to an existing network.",
+      "industry_certifications": [
+        "Red Hat Certified System Administrator (EX200: RHCSA)"
+      ]
+    },
+    {
+      "code": "NOS-230",
+      "title": "Windows Administration I",
+      "credits": 3,
+      "semester": 2,
+      "description": "This course covers the installation and configuration of a Windows Server operating system. Emphasis is placed on the basic configuration of core network services, Active Directory and group policies. Upon completion, students should be able to install and configure a Windows Server operating system.",
+      "industry_certifications": [
+        "Microsoft Exam AZ-800"
+      ]
+    },
+    {
+      "code": "NET-125",
+      "title": "Introduction to Networks",
+      "credits": 3,
+      "semester": 2,
+      "description": "This course offers a detailed exploration of the architecture, structure, functions, components, and operating models of the Internet and other computer networks. Topics include the essentials of IP addressing, Ethernet basics, various media types, and network operations. Upon completion, students should be able to build/troubleshoot simple Local Area Networks (LANs), develop effective IP addressing schemes, and configure routers and switches.",
+      "industry_certifications": [
+        "Cisco Certified Network Associate (CCNA) - part of NET 125/126/225 sequence"
+      ]
+    },
+    {
+      "code": "NET-126",
+      "title": "Switching and Routing",
+      "credits": 3,
+      "semester": 3,
+      "description": "This course covers the architecture, components, and operations of routers and switches in small networks and introduces wireless local area networks (WLAN) and security concepts. Emphasis is placed on configuring and troubleshooting routers and switches for advanced functionality using security best practices and resolving common network issues utilizing both IPv4 and IPv6 protocols. Upon completion, students should be able to configure VLANs and Inter-VLAN routing applying security best practices, troubleshoot inter-VLAN routing on Layer 3 devices.",
+      "industry_certifications": [
+        "Cisco Certified Network Associate (CCNA) - part of NET 125/126/225 sequence"
+      ]
+    },
+    {
+      "code": "CSC-121",
+      "title": "Python Programming",
+      "credits": 3,
+      "semester": 4,
+      "description": "This course introduces computer programming using the Python programming language. Emphasis is placed on common algorithms and programming principles utilizing the standard library distributed with Python. Upon completion, students should be able to design, code, test, and debug Python language programs.",
+      "industry_certifications": [
+        "ITS-303 IT Specialist Python",
+        "PCEP Certified Entry-Level Python Programmer"
+      ]
+    },
+    {
+      "code": "CTS-115",
+      "title": "Info Sys Business Concepts",
+      "credits": 3,
+      "semester": 4,
+      "description": "This course introduces the role of IT in managing business processes and the need for business process and IT alignment. Emphasis is placed on industry need for understanding business challenges and developing/managing information systems to contribute to the decision making process based on these challenges. Upon completion, students should be able to demonstrate knowledge of the 'hybrid business manager' and the potential offered by new technology and systems.",
+      "industry_certifications": []
+    },
+    {
+      "code": "SEC-110",
+      "title": "Security Concepts",
+      "credits": 3,
+      "semester": 4,
+      "description": "This course introduces the concepts and issues related to securing information systems and the development of policies to implement information security controls. Topics include the historical view of networking and security, security issues, trends, security resources, and the role of policy, people, and processes in information security. Upon completion, students should be able to identify information security risks, create an information security policy, and identify processes to implement and enforce policy.",
+      "industry_certifications": [
+        "CompTIA Security+"
+      ]
+    }
+  ]
+}

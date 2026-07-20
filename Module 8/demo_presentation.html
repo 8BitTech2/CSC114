@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C2C Gap Analyzer — Demo Walkthrough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c1917;
+    --surface: #142825;
+    --surface-2: #1c332f;
+    --border: #2a4440;
+    --text: #e4ede9;
+    --text-dim: #7fa39a;
+    --text-faint: #4d6a63;
+    --teal: #2dd4bf;
+    --teal-dim: #164e46;
+    --amber: #e8a33d;
+    --amber-dim: #4a3717;
+    --coral: #e2574c;
+    --coral-dim: #4a201c;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: var(--bg); color: var(--text); font-family: var(--sans); overflow: hidden; }
+
+  .deck { position: relative; width: 100vw; height: 100vh; }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vh 10vw 12vh;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .slide.active { display: flex; opacity: 1; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 16ch;
+  }
+  h1 .accent { color: var(--teal); }
+
+  .lede {
+    margin-top: 1.5rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    color: var(--text-dim);
+    max-width: 62ch;
+    line-height: 1.6;
+  }
+
+  .body-list { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 1.1rem; max-width: 66ch; }
+  .body-item { display: flex; gap: 1rem; align-items: baseline; }
+  .body-item .tag {
+    font-family: var(--mono); font-size: 12px; color: var(--teal);
+    background: var(--teal-dim); border-radius: 4px; padding: 3px 8px;
+    flex-shrink: 0; white-space: nowrap;
+  }
+  .body-item p { font-size: 1.05rem; line-height: 1.55; color: var(--text); }
+  .body-item p b { color: var(--text); font-weight: 500; }
+
+  .metric-row { display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .metric { font-family: var(--mono); }
+  .metric .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .metric .value { font-size: 1.9rem; font-weight: 500; display: flex; align-items: baseline; gap: 10px; }
+
+  .bar-compare { margin-top: 2rem; display: flex; flex-direction: column; gap: 10px; max-width: 480px; }
+  .bar-item { display: flex; flex-direction: column; }
+  .bar-label-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-bottom: 3px; }
+  .bar-fill-track { height: 16px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .bar-track { height: 22px; background: var(--surface-2); border-radius: 4px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-family: var(--mono); font-size: 12px; font-weight: 500; }
+  .bar-fill.before { background: var(--amber-dim); color: var(--amber); }
+  .bar-fill.after { background: var(--teal-dim); color: var(--teal); }
+  .bar-caption { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
+
+  .callout {
+    margin-top: 1.8rem;
+    border-left: 2px solid var(--coral);
+    padding: 0.9rem 1.2rem;
+    background: var(--coral-dim);
+    max-width: 60ch;
+    font-size: 0.98rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .callout b { color: var(--coral); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; max-width: 82ch; }
+  .col-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem 1.5rem; }
+  .col-card h3 { font-family: var(--mono); font-size: 13px; color: var(--teal); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.9rem; }
+  .col-card p { font-size: 0.95rem; line-height: 1.55; color: var(--text-dim); margin-bottom: 0.6rem; }
+  .col-card p:last-child { margin-bottom: 0; }
+
+  .status-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 44px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10vw;
+    font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
+  }
+  .status-left { display: flex; align-items: center; gap: 14px; }
+  .status-left .cmd { color: var(--teal); }
+  .progress-track { display: flex; gap: 4px; }
+  .progress-seg { width: 22px; height: 4px; background: var(--border); border-radius: 2px; }
+  .progress-seg.done { background: var(--teal); }
+  .nav-hint { color: var(--text-faint); }
+
+  .nav-btn {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    font-size: 16px; display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-btn:hover { color: var(--teal); border-color: var(--teal); }
+  .nav-btn.prev { left: 24px; }
+  .nav-btn.next { right: 24px; }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <div class="slide active" data-idx="0">
+    <div class="eyebrow">c2c gap analyzer — demo walkthrough</div>
+    <h1>Does the curriculum actually<br><span class="accent">prepare students</span> for the job?</h1>
+    <p class="lede">A working pipeline that compares FTCC's Cloud Management AAS against real job requirements — and an agent that explains the gaps in plain language.</p>
+  </div>
+
+  <div class="slide" data-idx="1">
+    <div class="eyebrow">01 &middot; the goal</div>
+    <h1>Check readiness. Report the gap.</h1>
+    <p class="lede">The agent checks whether FTCC's Cloud Management curriculum actually prepares students for the cloud and data center jobs available locally — and produces a plain-language report on where the gaps are.</p>
+  </div>
+
+  <div class="slide" data-idx="2">
+    <div class="eyebrow">02 &middot; the data</div>
+    <h1>Three real sources, no synthetic data.</h1>
+    <div class="body-list">
+      <div class="body-item">
+        <span class="tag">curriculum</span>
+        <p>15 real FTCC Cloud Management courses (A25590U), via NCCCS's statewide standardized catalog text — FTCC's own PDFs have a font-encoding bug that corrupts extraction.</p>
+      </div>
+      <div class="body-item">
+        <span class="tag">jobs</span>
+        <p>Real O*NET task data for 5 occupations: Network &amp; Computer Systems Administrators, Information Security Analysts, Computer User Support Specialists, Computer Network Architects, Computer Systems Engineers/Architects.</p>
+      </div>
+      <div class="body-item">
+        <span class="tag">local</span>
+        <p>Real, currently posted listings from GDIT (Fort Liberty) and county-government IT roles — used to word the scenario tasks and survey items in actual employer language.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" data-idx="3">
+    <div class="eyebrow">03 &middot; the approach</div>
+    <h1>Classify. Score. Explain.</h1>
+    <div class="body-list">
+      <div class="body-item"><span class="tag">01</span><p>9-category skill taxonomy — virtualization, networking, cloud platforms, storage, security, scripting, monitoring, hardware, soft skills.</p></div>
+      <div class="body-item"><span class="tag">02</span><p>Course and job text weak-labeled by keyword match, then a <b>TF-IDF + OneVsRest LogisticRegression</b> classifier trained on those labels for smoother scoring.</p></div>
+      <div class="body-item"><span class="tag">03</span><p>Scores normalized against the dataset's own achievable ceiling — a 0–100 readiness score per category, per occupation.</p></div>
+      <div class="body-item"><span class="tag">04</span><p>An agent step wraps the whole pipeline and calls Claude to turn the numbers into a natural-language gap report with recommendations.</p></div>
+    </div>
+  </div>
+
+  <div class="slide" data-idx="4">
+    <div class="eyebrow">04 &middot; improvement, example a</div>
+    <h1>A rare-class bug in the classifier.</h1>
+    <p class="lede" style="margin-top:0.8rem;">cloud_platforms scored 3.5/100 despite CTI-141 being a dedicated cloud course. First guess — thin keywords — didn't move the number at all.</p>
+    <div class="callout"><b>Real cause:</b> only 1 of 74 training documents was a positive example for this category. Without class balancing, LogisticRegression suppressed its probability to near-zero, even on the true positive.</div>
+    <div class="bar-compare">
+      <div class="bar-caption">cloud_platforms curriculum coverage</div>
+      <div class="bar-track"><div class="bar-fill before" style="width:3.5%">3.5</div></div>
+      <div class="bar-track"><div class="bar-fill after" style="width:34.4%">34.4</div></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="label">fix applied</div><div class="value" style="font-size:1.1rem; color:var(--text);">class_weight="balanced"</div></div>
+    </div>
+  </div>
+
+  <div class="slide" data-idx="5">
+    <div class="eyebrow">05 &middot; improvement, example b</div>
+    <h1>The source data undersold itself.</h1>
+    <p class="lede" style="margin-top:0.8rem;">Not a code bug this time — the course-description text just didn't say enough. FTCC's own certification crosswalk told a different story.</p>
+    <div class="two-col">
+      <div class="col-card">
+        <h3>what the catalog says</h3>
+        <p>CTI-240 / CTI-241 described generically as "virtualization administration." No mention of AWS, Azure, or any cloud platform by name.</p>
+      </div>
+      <div class="col-card">
+        <h3>what the crosswalk says</h3>
+        <p>CTI-240 &rarr; AWS Solutions Architect – Associate</p>
+        <p>CTI-241 &rarr; Microsoft Azure Administrator (AZ-104)</p>
+      </div>
+    </div>
+    <div class="bar-compare">
+      <div class="bar-caption">cloud_platforms curriculum coverage, after adding certification data as signal</div>
+      <div class="bar-track"><div class="bar-fill before" style="width:34.4%">34.4</div></div>
+      <div class="bar-track"><div class="bar-fill after" style="width:70.6%">70.6</div></div>
+    </div>
+  </div>
+
+  <div class="slide" data-idx="5b">
+    <div class="eyebrow">05a &middot; curriculum coverage, before</div>
+    <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);">Before the crosswalk fix</h1>
+    <div class="bar-compare" style="max-width:640px; margin-top:1.6rem;">
+      <div class="bar-item"><div class="bar-label-row"><span>virtualization</span><span>60.1</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:60.1%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>networking</span><span>100.0</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:100%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>cloud_platforms</span><span>34.4</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:34.4%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>storage</span><span>61.2</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:61.2%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>security_compliance</span><span>84.4</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:84.4%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>scripting_automation</span><span>65.9</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:65.9%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>monitoring_troubleshooting</span><span>70.9</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:70.9%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>hardware_physical_infra</span><span>72.6</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:72.6%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>itil_soft_skills</span><span>59.6</span></div><div class="bar-fill-track"><div class="bar-fill before" style="width:59.6%"></div></div></div>
+    </div>
+  </div>
+
+  <div class="slide" data-idx="5c">
+    <div class="eyebrow">05b &middot; curriculum coverage, after</div>
+    <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);">After the crosswalk fix</h1>
+    <div class="bar-compare" style="max-width:640px; margin-top:1.6rem;">
+      <div class="bar-item"><div class="bar-label-row"><span>virtualization</span><span>60.4</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:60.4%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>networking</span><span>100.0</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:100%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>cloud_platforms</span><span>70.6</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:70.6%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>storage</span><span>61.1</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:61.1%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>security_compliance</span><span>88.8</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:88.8%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>scripting_automation</span><span>65.8</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:65.8%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>monitoring_troubleshooting</span><span>70.6</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:70.6%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>hardware_physical_infra</span><span>72.5</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:72.5%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>itil_soft_skills</span><span>60.2</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:60.2%"></div></div></div>
+    </div>
+    <p class="lede" style="margin-top:1.4rem; font-size:1rem;">cloud_platforms is the one real mover — every other category holds roughly steady, which is the expected result: only virtualization-adjacent courses were undersold by their descriptions.</p>
+  </div>
+
+  <div class="slide" data-idx="5d">
+    <div class="eyebrow">05c &middot; occupation-level readiness</div>
+    <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);">A different story at the occupation level</h1>
+    <div class="bar-compare" style="max-width:640px; margin-top:1.2rem;">
+      <div class="bar-item"><div class="bar-label-row"><span>Network &amp; Computer Systems Admins</span><span>67.7 &rarr; 69.2</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:67.7%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:69.2%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Information Security Analysts</span><span>88.6 &rarr; 88.9</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:88.6%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:88.9%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Computer User Support Specialists</span><span>97.7 &rarr; 97.6</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:97.7%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:97.6%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Computer Network Architects</span><span>95.5 &rarr; 95.9</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:95.5%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:95.9%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Computer Systems Engineers/Architects</span><span>89.7 &rarr; 90.2</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:89.7%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:90.2%"></div></div></div></div>
+    </div>
+    <div class="callout"><b>Why the numbers barely moved:</b> readiness is normalized against each occupation's own best-covered category. cloud_platforms was already at or near that ceiling for 4 of 5 occupations before the crosswalk fix — the fix changed curriculum coverage a lot (34.4&rarr;70.6) but that category was rarely the bottleneck at the occupation level to begin with.</div>
+  </div>
+
+  <div class="slide" data-idx="5e">
+    <div class="eyebrow">05d &middot; improvement, example c</div>
+    <h1>Trusting the expert over the automation.</h1>
+    <p class="lede" style="margin-top:0.8rem;">Hand-coded every course against every taxonomy category, then checked it against the automated classifier's own labels — as an actual test of the model, not just another tuning pass.</p>
+    <div class="callout"><b>Result:</b> Cohen's kappa = 0.073 between expert coding and the classifier — slight agreement. 84 of 144 cells disagreed, almost all in one direction: the classifier was under-counting real coverage that the expert could see and the classifier couldn't.</div>
+    <div class="metric-row">
+      <div class="metric"><div class="label">agreement (kappa)</div><div class="value" style="font-size:1.6rem;">0.073 <span style="font-size:0.9rem; color:var(--text-dim);">slight</span></div></div>
+      <div class="metric"><div class="label">disagreeing cells</div><div class="value" style="font-size:1.6rem;">84 / 144</div></div>
+    </div>
+    <p class="lede" style="margin-top:1.2rem; font-size:1rem;">Fix: curriculum-side scoring now comes directly from the expert-coded matrix, not classifier predictions. The classifier still runs, but only on the O*NET job-task side, where no expert coding exists.</p>
+  </div>
+
+  <div class="slide" data-idx="5f">
+    <div class="eyebrow">05e &middot; final state, curriculum coverage</div>
+    <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);">Curriculum coverage, expert-coded</h1>
+    <div class="bar-compare" style="max-width:640px; margin-top:1.2rem;">
+      <div class="bar-item"><div class="bar-label-row"><span>virtualization</span><span>56.2</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:56.2%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>networking</span><span>75.0</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:75%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>cloud_platforms</span><span>56.2</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:56.2%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>storage</span><span>75.0</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:75%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>security_compliance</span><span>100.0</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:100%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>scripting_automation</span><span>93.8</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:93.8%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>monitoring_troubleshooting</span><span>100.0</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:100%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>hardware_physical_infra</span><span>56.2</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:56.2%"></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>itil_soft_skills</span><span>81.2</span></div><div class="bar-fill-track"><div class="bar-fill after" style="width:81.2%"></div></div></div>
+    </div>
+    <p class="lede" style="margin-top:1.2rem; font-size:1rem;">Scores are relative to the highest-covered category, not absolute exposure — a category scoring lower here doesn't mean it shrank, it can mean another category rose faster and reset the ceiling.</p>
+  </div>
+
+  <div class="slide" data-idx="5g">
+    <div class="eyebrow">05f &middot; final state, occupation readiness</div>
+    <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);">Occupation readiness, before vs after expert coding</h1>
+    <div class="bar-compare" style="max-width:640px; margin-top:1.2rem;">
+      <div class="bar-item"><div class="bar-label-row"><span>Network &amp; Computer Systems Admins</span><span>69.2 &rarr; 91.4</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:69.2%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:91.4%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Information Security Analysts</span><span>88.9 &rarr; 100.0</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:88.9%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:100%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Computer User Support Specialists</span><span>97.6 &rarr; 100.0</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:97.6%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:100%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Computer Network Architects</span><span>95.9 &rarr; 100.0</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:95.9%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:100%"></div></div></div></div>
+      <div class="bar-item"><div class="bar-label-row"><span>Computer Systems Engineers/Architects</span><span>90.2 &rarr; 99.6</span></div>
+        <div style="display:flex; gap:4px;"><div class="bar-fill-track" style="flex:1;"><div class="bar-fill before" style="width:90.2%"></div></div><div class="bar-fill-track" style="flex:1;"><div class="bar-fill after" style="width:99.6%"></div></div></div></div>
+    </div>
+    <div class="callout"><b>Take this number carefully:</b> readiness rose sharply because the expert-coded matrix shows courses covering far more categories than the classifier detected — this reflects trusting real curriculum knowledge over keyword matching, not the program suddenly improving.</div>
+  </div>
+
+  <div class="slide" data-idx="6">
+    <div class="eyebrow">06 &middot; the live demo</div>
+    <h1>Running it, now.</h1>
+    <div class="body-list">
+      <div class="body-item"><span class="tag">run</span><p><code>python3 agent.py</code> — loads real data, trains the classifier, scores the gap analysis, calls Claude for the report.</p></div>
+      <div class="body-item"><span class="tag">fallback</span><p>If the LLM call can't reach the API live, the script's own fallback produces a templated report from the same real scored data — documented behavior, not a crash.</p></div>
+    </div>
+  </div>
+
+  <div class="slide" data-idx="6b">
+    <div class="eyebrow">06a &middot; verified live run</div>
+    <h1 style="font-size:clamp(1.7rem,3.2vw,2.6rem);">A real run, not a mockup.</h1>
+    <p class="lede" style="margin-top:0.6rem; font-size:1rem;">This is actual output from <code>python3 agent.py</code> — <code>source: llm</code>, cross-checked line by line against the scored data, not staged for this deck.</p>
+    <div class="two-col" style="grid-template-columns:1fr; max-width:720px;">
+      <div class="col-card">
+        <h3>three weakest categories, as reported</h3>
+        <p><b>Virtualization</b> — single-vendor lab exposure only; recommended adding a hypervisor-agnostic environment.</p>
+        <p><b>Cloud platforms</b> — conceptual coverage only; recommended hands-on multi-provider sandbox modules.</p>
+        <p><b>Hardware &amp; physical infrastructure</b> — lowest coverage of any category; recommended a physical rack-and-stack activity.</p>
+      </div>
+      <div class="col-card">
+        <h3>occupation-specific concern, as reported</h3>
+        <p><b>Network &amp; Computer Systems Administrators</b> — the only occupation meaningfully below the others, traced to networking and hardware/physical infrastructure specifically.</p>
+      </div>
+    </div>
+    <div class="callout" style="border-left-color:var(--teal); background:var(--teal-dim);">
+      <b style="color:var(--teal);">Verified:</b> every category and occupation named above matches the actual lowest-scoring entries in <code>gap_analysis_results.json</code> — the model's claims trace directly to real numbers, not plausible-sounding invention.
+    </div>
+  </div>
+
+  <div class="slide" data-idx="7">
+    <div class="eyebrow">13 &middot; closing</div>
+    <h1>What's still unresolved.</h1>
+    <div class="body-list">
+      <div class="body-item"><span class="tag">rater</span><p>Expert-vs-classifier agreement is now measured (kappa=0.073), but that's not the same as two independent <em>human</em> raters agreeing — a true second-rater check is still outstanding.</p></div>
+      <div class="body-item"><span class="tag">real gap</span><p>hardware_physical_infra stayed relatively weak across every fix — only NOS-110 touches it directly. A genuine curriculum gap, not an artifact.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<button class="nav-btn prev" onclick="go(-1)" aria-label="Previous slide">&#8592;</button>
+<button class="nav-btn next" onclick="go(1)" aria-label="Next slide">&#8594;</button>
+
+<div class="status-bar">
+  <div class="status-left">
+    <span class="cmd">$ agent.py</span>
+    <span id="stepLabel">--slide=1/8</span>
+  </div>
+  <div class="progress-track" id="progressTrack"></div>
+  <div class="nav-hint">&#8592; &#8594; to navigate</div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const track = document.getElementById('progressTrack');
+  for (let i = 0; i < total; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'progress-seg';
+    track.appendChild(seg);
+  }
+
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    document.getElementById('stepLabel').textContent = `--slide=${current + 1}/${total}`;
+    document.querySelectorAll('.progress-seg').forEach((seg, i) => seg.classList.toggle('done', i <= current));
+  }
+
+  function go(dir) {
+    current = Math.max(0, Math.min(total - 1, current + dir));
+    render();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+
+  render();
+</script>
+
+</body>
+</html>

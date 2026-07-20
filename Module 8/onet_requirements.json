@@ -1,0 +1,98 @@
+{
+  "source": "O*NET OnLine (onetonline.org), verified per-occupation task/technology data, retrieved July 2026",
+  "occupations": [
+    {
+      "soc_code": "15-1244.00",
+      "title": "Network and Computer Systems Administrators",
+      "tasks": [
+        "Install, configure, and maintain an organization's local area network (LAN), wide area network (WAN), data communications network, operating systems, and physical and virtual servers.",
+        "Perform system monitoring and verify the integrity and availability of hardware, network, and server resources and systems.",
+        "Review system and application logs and verify completion of scheduled jobs, including system backups.",
+        "Design, configure, and test computer hardware, networking software and operating system software.",
+        "Maintain and administer computer networks and related computing environments, including computer hardware, systems software, applications software, and all configurations.",
+        "Operate master consoles to monitor the performance of computer systems and networks and to coordinate computer network access and use.",
+        "Develop computer or information security policies or procedures.",
+        "Implement security measures for computer or information systems.",
+        "Install computer hardware.",
+        "Maintain computer networks to enhance performance and user access.",
+        "Monitor the performance of computer networks.",
+        "Provide technical support for computer network issues.",
+        "Document network-related activities or tasks.",
+        "Collect data about customer needs.",
+        "Coordinate resource procurement activities.",
+        "Maintain the inventory of equipment.",
+        "Update knowledge about emerging industry or technology trends."
+      ],
+      "technology": ["Citrix cloud computing software", "Cisco Systems CiscoWorks", "Network management software", "Docker", "GitHub", "Red Hat OpenShift", "Node.js"]
+    },
+    {
+      "soc_code": "15-1212.00",
+      "title": "Information Security Analysts",
+      "tasks": [
+        "Plan, implement, upgrade, or monitor security measures for the protection of computer networks and information.",
+        "Assess system vulnerabilities for security risks and propose and implement risk mitigation strategies.",
+        "Ensure appropriate security controls are in place that will safeguard digital files and vital electronic infrastructure.",
+        "Respond to computer security breaches and viruses.",
+        "Confer with users to discuss issues such as computer data access needs, security violations, and programming changes.",
+        "Document computer security and emergency measures policies, procedures, and tests.",
+        "Modify computer security files to incorporate new software, correct errors, or change individual access status.",
+        "Perform risk assessments and execute tests of data processing systems to ensure functioning of data processing activities and security measures.",
+        "Review violations of computer security procedures and discuss procedures with violators to ensure violations are not repeated.",
+        "Train users and promote security awareness to ensure system security and improve server and network efficiency.",
+        "Develop computer or information security policies or procedures.",
+        "Monitor the security of digital information."
+      ],
+      "technology": ["Access management software", "Citrix cloud computing software", "IBM Tivoli Access Management", "Docker", "GitHub", "Red Hat OpenShift", "Password management software", "RADIUS software", "Veritas NetBackup"]
+    },
+    {
+      "soc_code": "15-1232.00",
+      "title": "Computer User Support Specialists",
+      "tasks": [
+        "Provide technical assistance to computer users.",
+        "Answer questions or resolve computer problems for clients in person, via telephone, or electronically.",
+        "Provide assistance concerning the use of computer hardware and software, including printing, installation, word processing, electronic mail, and operating systems.",
+        "Answer user inquiries regarding computer software or hardware operation to resolve problems.",
+        "Install and perform minor repairs to hardware, software, or peripheral equipment, following design or installation specifications.",
+        "Oversee the daily performance of computer systems.",
+        "Read technical manuals, confer with users, or conduct computer diagnostics to investigate and resolve problems or to provide technical assistance and support.",
+        "Train others in computer interface or software use."
+      ],
+      "technology": ["Remote desktop control software", "Helpdesk ticketing software", "Diagnostic utilities"]
+    },
+    {
+      "soc_code": "15-1241.00",
+      "title": "Computer Network Architects",
+      "tasks": [
+        "Design and implement computer and information networks, such as local area networks (LAN), wide area networks (WAN), intranets, extranets, and other data communications networks.",
+        "Perform network modeling, analysis, and planning, including analysis of capacity needs for network infrastructures.",
+        "Design network and computer security measures.",
+        "Research and recommend network and data communications hardware and software.",
+        "Maintain contingency plans for disaster recovery.",
+        "Develop computer or information security policies or procedures.",
+        "Recommend changes to improve computer or information systems.",
+        "Resolve computer network problems.",
+        "Maintain computer networks to enhance performance and user access."
+      ],
+      "technology": ["Intrusion prevention system (IPS)", "LogRhythm", "VPN software", "Bash", "Red Hat Enterprise Linux", "UNIX Shell", "Network architecture design software", "Capacity planning software"]
+    },
+    {
+      "soc_code": "15-1299.08",
+      "title": "Computer Systems Engineers/Architects",
+      "tasks": [
+        "Verify stability, interoperability, portability, security, or scalability of system architecture.",
+        "Research, test, or verify proper functioning of software patches and fixes.",
+        "Configure servers to meet functional specifications.",
+        "Collaborate with engineers or software developers to select appropriate design solutions or ensure the compatibility of system components.",
+        "Design and conduct hardware or software tests.",
+        "Evaluate existing systems to determine effectiveness, and suggest changes to meet organizational requirements.",
+        "Document design specifications, installation instructions, and other system-related information.",
+        "Perform security analyses of developed or packaged software components.",
+        "Provide technical guidance or support for the development or troubleshooting of systems.",
+        "Develop system engineering, software engineering, system integration, or distributed system architectures.",
+        "Evaluate current or emerging technologies to consider factors such as cost, portability, compatibility, or usability.",
+        "Train system users in system operation or maintenance."
+      ],
+      "technology": ["Docker", "GitHub", "Red Hat OpenShift", "Configuration management tools", "Cloud infrastructure platforms"]
+    }
+  ]
+}

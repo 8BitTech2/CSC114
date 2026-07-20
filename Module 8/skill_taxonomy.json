@@ -1,0 +1,278 @@
+{
+  "taxonomy_version": "2.0-expanded",
+  "source": "Base categories from Model_idea.docx; expanded with explicit crosswalks for dissertation use and pipeline weak-labeling",
+  "categories": [
+    {
+      "id": "virtualization",
+      "label": "Virtualization",
+      "keywords": [
+        "virtualization",
+        "hypervisor",
+        "virtual machine",
+        "vm",
+        "vsphere",
+        "vcenter",
+        "esxi",
+        "vmware",
+        "hyper-v",
+        "vdi",
+        "virtual desktop",
+        "virtual application",
+        "vm migration",
+        "snapshot"
+      ],
+      "ftcc_courses": [
+        "CTI-141",
+        "CTI-240",
+        "CTI-241"
+      ],
+      "certifications": [
+        "AWS Certified Solutions Architect - Associate (SAA-C03, via CTI-240)",
+        "Microsoft Azure Administrator (AZ-104, via CTI-241)"
+      ],
+      "onet_occupations": [
+        "15-1244.00",
+        "15-1299.08"
+      ],
+      "example_employer_language": "Citrix VDI, Microsoft VDI, Virtual Desktop Infrastructure (VDI), VMware VDI (GDIT, Fort Liberty postings)",
+      "note": "Certifications corrected from guesses to real FTCC crosswalk data (2025SU_IT_CROSSWALK.pdf) -- CTI-240/241 align to AWS/Azure exams despite generic 'virtualization administration' course descriptions."
+    },
+    {
+      "id": "networking",
+      "label": "Networking",
+      "keywords": [
+        "network",
+        "routing",
+        "switching",
+        "vlan",
+        "lan",
+        "wan",
+        "ip addressing",
+        "router",
+        "switch",
+        "tcp/ip",
+        "wlan",
+        "ethernet",
+        "inter-vlan",
+        "network standards"
+      ],
+      "ftcc_courses": [
+        "CTI-120",
+        "NET-125",
+        "NET-126"
+      ],
+      "certifications": [
+        "CompTIA Network+",
+        "Cisco CCNA"
+      ],
+      "onet_occupations": [
+        "15-1244.00",
+        "15-1241.00"
+      ],
+      "example_employer_language": "Computer Networking, Computer Systems, Group Problem Solving, Network Systems (GDIT Network Administrator postings)"
+    },
+    {
+      "id": "cloud_platforms",
+      "label": "Cloud Platforms (AWS/Azure)",
+      "keywords": [
+        "cloud",
+        "aws",
+        "azure",
+        "cloud storage",
+        "cloud terminology",
+        "cloud computing",
+        "cloud provider",
+        "cloud service",
+        "cloud infrastructure",
+        "cloud environment",
+        "cloud-based"
+      ],
+      "ftcc_courses": [
+        "CTI-141"
+      ],
+      "certifications": [
+        "AWS Certified Cloud Practitioner (CLF-C02, via CTI-141)",
+        "Microsoft Azure Fundamentals (AZ-900, via CTI-141)",
+        "AWS Solutions Architect Associate (via CTI-240)",
+        "Azure Administrator AZ-104 (via CTI-241)",
+        "CCSP / GCP ACE (via CTI-289 capstone)"
+      ],
+      "onet_occupations": [
+        "15-1244.00",
+        "15-1212.00",
+        "15-1299.08"
+      ],
+      "example_employer_language": "familiar with cloud technologies and principles, cloud-based environments (GDIT Cloud Service Operations Specialist posting)",
+      "note": "This category scored anomalously low (3.5/100) in the initial classifier run despite CTI-141 being a dedicated cloud course -- a small-N weak-labeling artifact from the OneVsRest classifier, not a real curriculum gap. Keyword list expanded here specifically to address it; rerun the pipeline and compare before trusting either number."
+    },
+    {
+      "id": "storage",
+      "label": "Storage",
+      "keywords": [
+        "storage",
+        "san",
+        "nas",
+        "storage networking",
+        "data storage",
+        "backup",
+        "disaster recovery",
+        "storage system",
+        "backup and recovery"
+      ],
+      "ftcc_courses": [
+        "CTI-141",
+        "CTI-240",
+        "CTI-241"
+      ],
+      "certifications": [
+        "CompTIA Storage+ (legacy)",
+        "vendor-specific SAN/NAS certifications"
+      ],
+      "onet_occupations": [
+        "15-1244.00",
+        "15-1212.00"
+      ],
+      "example_employer_language": "Backup and Recovery (Software) (GDIT Systems Administrator postings)"
+    },
+    {
+      "id": "security_compliance",
+      "label": "Security / Compliance",
+      "keywords": [
+        "security",
+        "access control",
+        "compliance",
+        "policy",
+        "risk",
+        "vulnerability",
+        "identity",
+        "authentication",
+        "clearance",
+        "incident",
+        "secure configuration",
+        "information security"
+      ],
+      "ftcc_courses": [
+        "CTI-120",
+        "SEC-110"
+      ],
+      "certifications": [
+        "CompTIA Security+",
+        "(Sec)+ adjacent: Network+ security objectives"
+      ],
+      "onet_occupations": [
+        "15-1212.00",
+        "15-1241.00"
+      ],
+      "example_employer_language": "Secret/Top Secret security clearance requirement is itself the dominant local gatekeeping factor in this category (see Study Problem clearance finding) -- distinct from the technical competencies this category otherwise measures"
+    },
+    {
+      "id": "scripting_automation",
+      "label": "Scripting / Automation",
+      "keywords": [
+        "scripting",
+        "shell",
+        "python",
+        "bash",
+        "automation",
+        "programming",
+        "script",
+        "process control",
+        "power user utilities"
+      ],
+      "ftcc_courses": [
+        "CSC-121",
+        "NOS-125"
+      ],
+      "certifications": [
+        "Python Institute PCEP/PCAP",
+        "CompTIA Linux+ (scripting objectives)"
+      ],
+      "onet_occupations": [
+        "15-1244.00",
+        "15-1299.08"
+      ],
+      "example_employer_language": "shell scripting tasks, process control (NOS-125 course description; general automation language across GDIT IT Infrastructure postings)"
+    },
+    {
+      "id": "monitoring_troubleshooting",
+      "label": "Monitoring & Troubleshooting",
+      "keywords": [
+        "monitoring",
+        "troubleshoot",
+        "diagnos",
+        "fault",
+        "performance",
+        "log",
+        "alert",
+        "tier-1",
+        "root cause"
+      ],
+      "ftcc_courses": [
+        "CTI-241",
+        "NOS-110",
+        "NET-126"
+      ],
+      "certifications": [
+        "CompTIA A+ (troubleshooting objectives)"
+      ],
+      "onet_occupations": [
+        "15-1244.00",
+        "15-1232.00",
+        "15-1241.00"
+      ],
+      "example_employer_language": "rapidly troubleshoot Tier-1 support issues, Troubleshooting (GDIT Cloud Service Operations Specialist and Systems Administrator postings)"
+    },
+    {
+      "id": "hardware_physical_infra",
+      "label": "Hardware / Physical Infrastructure",
+      "keywords": [
+        "hardware",
+        "physical",
+        "datacenter",
+        "data center",
+        "cabling",
+        "rack",
+        "server hardware",
+        "physical infrastructure"
+      ],
+      "ftcc_courses": [
+        "NOS-110"
+      ],
+      "certifications": [
+        "CompTIA A+"
+      ],
+      "onet_occupations": [
+        "15-1244.00"
+      ],
+      "example_employer_language": "Cable Technician roles listed alongside GDIT Fort Liberty IT Infrastructure and Operations postings -- indicates real, if separately titled, demand",
+      "note": "Weakest curriculum coverage of any category by course count (only NOS-110 touches physical hardware directly) -- a real candidate for the 'weakest categories' finding in the agent's gap report, independent of the small-N scoring artifact."
+    },
+    {
+      "id": "itil_soft_skills",
+      "label": "ITIL / Business & Soft Skills",
+      "keywords": [
+        "business process",
+        "itil",
+        "documentation",
+        "communication",
+        "project",
+        "policy definition",
+        "process alignment",
+        "technical briefing",
+        "customer service"
+      ],
+      "ftcc_courses": [
+        "CTS-115",
+        "CTI-289"
+      ],
+      "certifications": [
+        "ITIL Foundation"
+      ],
+      "onet_occupations": [
+        "15-1232.00",
+        "15-1299.08"
+      ],
+      "example_employer_language": "Good written and technical briefing skills -- can effectively communicate with teammates and leadership (GDIT Cloud Service Operations Specialist posting)"
+    }
+  ]
+}

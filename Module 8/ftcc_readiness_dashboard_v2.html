@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FTCC Cloud Management Readiness Dashboard (Agent Rebuild)</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0f1216; color:#e8e8e8; margin:0; padding:24px; }
+  h1 { font-size: 22px; margin-bottom:4px; }
+  .sub { color:#9aa4af; margin-bottom:24px; font-size:13px; }
+  .warn { background:#3a2a12; border:1px solid #8a5a1a; color:#f0c789; padding:10px 14px; border-radius:6px; font-size:13px; margin-bottom:20px; }
+  select { background:#1c2128; color:#e8e8e8; border:1px solid #333; padding:6px 10px; border-radius:6px; margin-bottom:20px; }
+  .bar-row { display:flex; align-items:center; margin-bottom:8px; }
+  .bar-label { width:220px; font-size:13px; color:#c7cdd4; }
+  .bar-track { flex:1; background:#1c2128; border-radius:4px; overflow:hidden; height:22px; }
+  .bar-fill { height:100%; background:linear-gradient(90deg,#3b82f6,#22d3ee); display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-size:12px; color:#0f1216; font-weight:600; }
+  .low .bar-fill { background:linear-gradient(90deg,#ef4444,#f59e0b); }
+  .card { background:#161a20; border:1px solid #262b33; border-radius:10px; padding:20px; margin-bottom:20px; }
+  .occ-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .occ-card { background:#1c2128; border-radius:8px; padding:14px; }
+  .occ-title { font-size:13px; color:#c7cdd4; margin-bottom:6px; }
+  .occ-score { font-size:26px; font-weight:700; }
+</style>
+</head>
+<body>
+  <h1>C2C Gap Analyzer — Readiness Dashboard</h1>
+  <div class="sub">FTCC Cloud Management AAS (A25590U) vs. O*NET occupational requirements · rebuilt pipeline output</div>
+  <div class="warn">Curriculum coverage now comes directly from the instructor's hand-coded course/taxonomy matrix (courses_aligned_with_pillars.xlsx), not the automated classifier. A comparison of the two showed Cohen's kappa = 0.073 (slight agreement) -- the classifier was badly under-counting real coverage. Job/occupation-side scoring still uses the automated classifier, since no expert coding exists for O*NET task text.</div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Curriculum Coverage by Skill Category</h3>
+    <div id="currBars"></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Readiness by Occupation</h3>
+    <select id="occSelect"></select>
+    <div id="occBars"></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Overall Readiness Comparison</h3>
+    <div class="occ-grid" id="occGrid"></div>
+  </div>
+
+<script>
+const DATA = {"categories": ["virtualization", "networking", "cloud_platforms", "storage", "security_compliance", "scripting_automation", "monitoring_troubleshooting", "hardware_physical_infra", "itil_soft_skills"], "occupations": [{"soc_code": "15-1244.00", "title": "Network and Computer Systems Administrators", "readiness_by_category": {"virtualization": 96.6, "networking": 69.3, "cloud_platforms": 95.2, "storage": 100.0, "security_compliance": 100.0, "scripting_automation": 100.0, "monitoring_troubleshooting": 100.0, "hardware_physical_infra": 61.6, "itil_soft_skills": 100.0}, "overall_readiness": 91.4}, {"soc_code": "15-1212.00", "title": "Information Security Analysts", "readiness_by_category": {"virtualization": 100.0, "networking": 100.0, "cloud_platforms": 100.0, "storage": 100.0, "security_compliance": 100.0, "scripting_automation": 100.0, "monitoring_troubleshooting": 100.0, "hardware_physical_infra": 100.0, "itil_soft_skills": 100.0}, "overall_readiness": 100.0}, {"soc_code": "15-1232.00", "title": "Computer User Support Specialists", "readiness_by_category": {"virtualization": 100.0, "networking": 100.0, "cloud_platforms": 100.0, "storage": 100.0, "security_compliance": 100.0, "scripting_automation": 100.0, "monitoring_troubleshooting": 100.0, "hardware_physical_infra": 100.0, "itil_soft_skills": 100.0}, "overall_readiness": 100.0}, {"soc_code": "15-1241.00", "title": "Computer Network Architects", "readiness_by_category": {"virtualization": 100.0, "networking": 100.0, "cloud_platforms": 100.0, "storage": 100.0, "security_compliance": 100.0, "scripting_automation": 100.0, "monitoring_troubleshooting": 100.0, "hardware_physical_infra": 100.0, "itil_soft_skills": 100.0}, "overall_readiness": 100.0}, {"soc_code": "15-1299.08", "title": "Computer Systems Engineers/Architects", "readiness_by_category": {"virtualization": 100.0, "networking": 100.0, "cloud_platforms": 100.0, "storage": 100.0, "security_compliance": 100.0, "scripting_automation": 100.0, "monitoring_troubleshooting": 100.0, "hardware_physical_infra": 96.4, "itil_soft_skills": 100.0}, "overall_readiness": 99.6}], "curriculum_coverage": {"virtualization": 56.2, "networking": 75.0, "cloud_platforms": 56.2, "storage": 75.0, "security_compliance": 100.0, "scripting_automation": 93.8, "monitoring_troubleshooting": 100.0, "hardware_physical_infra": 56.2, "itil_soft_skills": 81.2}, "curriculum_coverage_source": "expert-coded (courses_aligned_with_pillars.xlsx), not classifier-predicted"};
+
+function bar(label, value, container, lowThreshold=40) {
+  const row = document.createElement('div');
+  row.className = 'bar-row' + (value < lowThreshold ? ' low' : '');
+  row.innerHTML = `<div class="bar-label">${label}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${value}%">${value}</div></div>`;
+  container.appendChild(row);
+}
+
+function renderCurriculum() {
+  const el = document.getElementById('currBars');
+  el.innerHTML = '';
+  DATA.categories.forEach(cat => bar(cat, DATA.curriculum_coverage[cat], el));
+}
+
+function renderOccupation(soc) {
+  const occ = DATA.occupations.find(o => o.soc_code === soc);
+  const el = document.getElementById('occBars');
+  el.innerHTML = '';
+  DATA.categories.forEach(cat => bar(cat, occ.readiness_by_category[cat], el));
+}
+
+function renderGrid() {
+  const el = document.getElementById('occGrid');
+  el.innerHTML = '';
+  DATA.occupations.forEach(o => {
+    const c = document.createElement('div');
+    c.className = 'occ-card';
+    c.innerHTML = `<div class="occ-title">${o.title}</div><div class="occ-score">${o.overall_readiness}</div>`;
+    el.appendChild(c);
+  });
+}
+
+const sel = document.getElementById('occSelect');
+DATA.occupations.forEach(o => {
+  const opt = document.createElement('option');
+  opt.value = o.soc_code; opt.textContent = o.title;
+  sel.appendChild(opt);
+});
+sel.addEventListener('change', () => renderOccupation(sel.value));
+
+renderCurriculum();
+renderOccupation(DATA.occupations[0].soc_code);
+renderGrid();
+</script>
+</body>
+</html>
