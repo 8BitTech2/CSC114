@@ -1,0 +1,62 @@
+## C2C Gap Analyzer Agent
+
+Since these files live on my Windows machine (`C:\Users\tim\Downloads\files (4)\`), the actual `git init`/commit needs to happen there.
+
+1. Copy `README.md`, `requirements.txt`, and `.gitignore` above into your `C:\Users\tim\Downloads\C2C\` folder (or wherever your final working copy lives).
+
+2. Open a terminal (PowerShell or Git Bash) in that folder and run:
+
+```bash
+git init
+git add .
+git commit -m "C2C Gap Analyzer agent: real curriculum + O*NET data, classifier, LLM report generation"
+```
+
+3. When you already have a GitHub repo for this course project, link and push:
+
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git branch -M main
+git push -u origin main
+```
+
+4. If you don't have a remote repo yet, create an empty one on GitHub first (no README/license — you already have your own), then use that URL in step 3.
+
+5. One thing to double-check before you commit: make sure `ANTHROPIC_API_KEY` is not hardcoded anywhere in your files — it should only ever be set as an environment variable, never committed to the repo. Your `agent.py` already reads it from `os.environ`, so you're fine as long as you haven't typed the actual key into any file by hand.
+
+## Let's make sure the demo actually runs reliably in front of the class
+
+A few things worth nailing down: fresh classroom lab computer + untested API key is exactly the combination most likely to break live. Here's a plan to de-risk it.
+
+### Before demo day — test these on the actual lab computer, not just your own
+
+**Python is installed and accessible**
+
+```bash
+python3 --version
+```
+
+If it's Windows lab machines, it might only be `python` not `python3` — check both.
+
+**You can install packages** (lab computers often lock down admin/install rights)
+
+```bash
+pip install --user scikit-learn requests
+```
+
+The `--user` flag avoids needing admin rights. If pip itself is blocked, that's the single biggest risk — find this out now, not on demo day.
+
+**The network allows outbound HTTPS to `api.anthropic.com`** — school networks sometimes block API domains that aren't on an approved list. Test with:
+
+```bash
+python3 -c "import requests; r = requests.post('https://api.anthropic.com/v1/messages', headers={'x-api-key':'YOUR_KEY','anthropic-version':'2023-06-01','content-type':'application/json'}, json={'model':'claude-sonnet-4-6','max_tokens':50,'messages':[{'role':'user','content':'say hi'}]}); print(r.status_code, r.text[:200])"
+```
+
+If this fails with a connection error (not an auth error), it's the network, not your key — worth knowing ahead of time so you're not debugging blind live.
+
+### Backup plan if any of the above fails on demo day
+
+- Have `gap_analysis_results.json`, `gap_report.json`, and the dashboard HTML already generated and saved locally (you have these now) so you can open the dashboard and walk through real output even with zero internet.
+- If the LLM call fails live, that's not a disaster — the agent's fallback path is the templated report, and you can say exactly that: "the LLM call isn't reaching the API right now, here's the pipeline's fallback behavior, and here's what the real output looked like when I ran it earlier" — then show the saved `gap_report.json` from a working run. That's a legitimate, honest demo moment, not a failure.
+
+**Status: confirmed.** The lab computers have Python, pip installs work, and the setup check (`setup_check.bat`) confirmed a working connection to `api.anthropic.com` from the actual lab machine. All three of the pre-demo risks above are cleared.
